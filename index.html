@@ -19,7 +19,12 @@
                 <li><a href="services">Services</a></li>
                 <li><a href="contact">Contact</a></li>
             </ul>
-            <a href="#" class="action_btn">Get Started</a>
+            <!-- <a href="#" class="action_btn">Get Started</a> -->
+            <div class="theme_toggle_btn">
+                <img src="images/sun.png" alt="">
+                <img src="images/moon.png" alt="">
+                <span></span>
+            </div>
             <div class="toggle_btn">
                 <i class="fa-solid fa-bars"></i>
             </div>
@@ -34,16 +39,45 @@
     </header>
 
     <main>
-        <section id="hero">
-            <h1>Welcome</h1>
-            <p>Lorem ipsum dolor sit amet consectetur <br /> elit. Labore, veniam.</p>
+        <section id="hero" class="hero">
+            <div class="container">
+                <div class="left">
+                    <h1>Light / Dark <span>Theme</span></h1>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate quasi delectus accusantium. Possimus eligendi, explicabo qui eveniet id temporibus alias!</p>
+                    <button>about me</button>
+                </div>
+                <div class="right">
+                    <img src="images/hero.png" alt="">
+                </div>
+            </div>
         </section>
     </main>
 
     <script>
         const toggleBtn = document.querySelector('.toggle_btn')
-        const toggleBtnIcon= document.querySelector('.toggle_btn i')
+        const toggleBtnIcon = document.querySelector('.toggle_btn i')
         const dropDownMenu = document.querySelector('.dropdown_menu')
+
+        var toggleBtnTheme = document.querySelector('.theme_toggle_btn')
+        var body = document.querySelector('body')
+
+        window.onload = function() {
+            const theme= localStorage.getItem('theme') || 'light'
+
+            if(theme === 'dark') {
+                body.classList.add('dark')
+                toggleBtnTheme.classList.add('dark')
+            }
+        }
+
+        toggleBtnTheme.addEventListener('click', function() {
+            const isDark = body.classList.contains('dark')
+
+            body.classList.toggle('dark')
+            toggleBtnTheme.classList.toggle('dark')
+
+            localStorage.setItem('theme', isDark ? 'light' : 'dark')
+        })
 
         toggleBtn.onclick = function () {
             dropDownMenu.classList.toggle('open')

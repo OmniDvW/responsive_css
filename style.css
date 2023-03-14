@@ -4,14 +4,23 @@
  padding: 0;
  box-sizing: border-box;
  font-family: 'Open Sans', sans-serif;
+ transition: color 0.1s ease, background-color 0.2s ease;
+}
+
+:root {
+    --primary-color: #fff;
+    --secondary-color: #333;
+    --accent-color: #ff7663;
+  }  
+
+body.dark {
+    --primary-color: #333;
+    --secondary-color: #fff;
 }
 
 body {
     height: 100vh;
-    background-color: #000;
-    background-image: url('https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1476&q=80');
-    background-size: cover;
-    background-position: center;
+    background-color: var(--primary-color);
 }
 
 li {
@@ -20,24 +29,26 @@ li {
 
 a {
     text-decoration: none;
-    color: #fff;
+    color: var(--secondary-color);
     font-size: 1rem;
 }
 
-a:hover {
+/* a:hover {
     color: orange;
-}
+} */
 
 /*//////////////////// HEADER ////////////////////*/
 header {
-    position: relative;
+    position: fixed;
+    width: 100%;
+    height: 80px;
     padding: 0 2rem;
 }
 
 .navbar {
     width: 100%;
-    height: 60px;
-    max-width: 1200px;
+    height: 100%;
+    max-width: 1440px;
     margin: 0 auto;
     display: flex;
     align-items: center;
@@ -47,11 +58,32 @@ header {
 .navbar .logo a {
     font-size: 1.5rem;
     font-weight: bold;
+    text-transform: capitalize;
 }
 
 .navbar .links {
     display: flex;
     gap: 2rem;
+}
+
+.navbar li {
+    position: relative;
+}
+
+.navbar li::before {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-color);
+    transition: 0.2s ease;
+}
+
+.navbar li:hover::before {
+    width: 100%;
+
 }
 
 .navbar .toggle_btn {
@@ -81,6 +113,38 @@ header {
 
 .action_btn:active {
     scale: 0.95;
+}
+
+.theme_toggle_btn {
+    position: relative;
+    width: 60px;
+    height: 30px;
+    background-color: var(--secondary-color);
+    padding: 5px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.theme_toggle_btn img {
+    width: 20px;
+    height: 20px;
+}
+
+.theme_toggle_btn span {
+    position: absolute;
+    left: 2px;
+    width: 26px;
+    height: 26px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    transition: left 0.2s ease-in;
+}
+
+.theme_toggle_btn.dark > span {
+    left: 32px;
 }
 
 /*//////////////////// DROPDOWN MENU ////////////////////*/
@@ -115,8 +179,72 @@ header {
     justify-content: center;
 }
 
-/*//////////////////// HERO ////////////////////*/
-section#hero {
+/*//////////////////// HERO SECTION ////////////////////*/
+.hero {
+    height: 100vh;
+    padding-top: 80px;
+    color: var(--secondary-color);
+}
+
+.hero .container {
+    margin: 0 auto;
+    width: 1440px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.hero .left,
+.hero .right {
+    width: 50%;
+}
+
+.hero img {
+    width: 100%;
+}
+
+.hero h1 {
+    margin-bottom: 3rem;
+    font-size: 5rem;
+    line-height: 1.2;
+    letter-spacing: 2px;
+}
+
+.hero h1 span {
+    color: var(--accent-color);
+}
+
+.hero p {
+    margin-bottom: 3rem;
+    max-width: 70%;
+    font-size: 18px;
+    letter-spacing: 2px;
+    word-break: break-all;
+}
+
+.hero button {
+    padding: 10px 30px;
+    background-color: var(--accent-color);
+    color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 30px;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: scale 0.2s ease;
+}
+
+.hero button:hover {
+    scale: 1.05;
+}
+
+.hero button:active {
+    scale: 0.95;
+}
+
+/* section#hero {
     height: calc(100vh - 60px);
     display: flex;
     flex-direction: column;
@@ -128,7 +256,7 @@ section#hero {
 #hero h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
-}
+} */
 
 /*//////////////////// RESPONSIVE DESIGN ////////////////////*/
 @media(max-width: 992px) {
