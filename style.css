@@ -1,4 +1,6 @@
-/*//////////////////// responsive_css ////////////////////*/
+/* ////////////////////////////////////////////////////////////////////////////////////////// */
+/*////////////////////////////// responsive_css //////////////////////////////*/
+/* ////////////////////////////////////////////////////////////////////////////////////////// */
 * {
  margin: 0;
  padding: 0;
@@ -11,6 +13,15 @@
     --primary-color: #fff;
     --secondary-color: #333;
     --accent-color: #ff7663;
+    --blue-color: #4158d0;
+    --pink-color: #c850c0;
+    --yellow-color: #ffcc70;
+    --fb-color: #4267b2;
+    --insta-color: #d62976;
+    --twitter-color: #1da1f2;
+    --linkedin-color: #0077b7;
+    --google-color: #f4b400;
+    --youtube-color: #ff0000;
   }  
 
 body.dark {
@@ -37,12 +48,15 @@ a {
     color: orange;
 } */
 
-/*//////////////////// HEADER ////////////////////*/
+/* ////////////////////////////////////////////////////////////////////////////////////////// */
+/*////////////////////////////// HEADER //////////////////////////////*/
+/* ////////////////////////////////////////////////////////////////////////////////////////// */
 header {
     position: fixed;
     width: 100%;
     height: 80px;
     padding: 0 2rem;
+    background-color: var(--primary-color);
 }
 
 .navbar {
@@ -87,7 +101,7 @@ header {
 }
 
 .navbar .toggle_btn {
-    color: #fff;
+    color: var(--secondary-color);
     font-size: 1.5rem;
     cursor: pointer;
     display: none;
@@ -147,7 +161,9 @@ header {
     left: 32px;
 }
 
-/*//////////////////// DROPDOWN MENU ////////////////////*/
+/* ////////////////////////////////////////////////////////////////////////////////////////// */
+/*////////////////////////////// DROPDOWN MENU //////////////////////////////*/
+/* ////////////////////////////////////////////////////////////////////////////////////////// */
 .dropdown_menu {
     display: none;
     position: absolute;
@@ -179,7 +195,9 @@ header {
     justify-content: center;
 }
 
-/*//////////////////// HERO SECTION ////////////////////*/
+/* ////////////////////////////////////////////////////////////////////////////////////////// */
+/*////////////////////////////// HERO SECTION //////////////////////////////*/
+/* ////////////////////////////////////////////////////////////////////////////////////////// */
 .hero {
     height: 100vh;
     padding-top: 80px;
@@ -258,7 +276,114 @@ header {
     margin-bottom: 1rem;
 } */
 
-/*//////////////////// RESPONSIVE DESIGN ////////////////////*/
+/* ////////////////////////////////////////////////////////////////////////////////////////// */
+/*////////////////////////////// MENU SECTION //////////////////////////////*/
+/* ////////////////////////////////////////////////////////////////////////////////////////// */
+.menu {
+    position: relative;
+    background-color: var(--blue-color);
+    background-image: linear-gradient(
+        45deg,
+        var(--blue-color),
+        var(--pink-color),
+        var(--yellow-color)
+    );
+    width: 100%;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu .action_menu_btn {
+    width: 60px;
+    height: 60px;
+    background-color: #fff;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    cursor: pointer;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 1.2s linear, box-shadow 1.2s ease, scale 0.2s ease;
+    z-index: 1;
+}
+
+.menu .action_menu_btn:hover {
+    scale: 1.05;
+}
+
+.menu .action_menu_btn:active{
+    scale: 0.95;
+}
+
+.menu.open .action_menu_btn {
+    transform: rotate(360deg);
+    box-shadow: 0 0 0 2px var(--pink-color), 0 0 0 10px #fff;
+}
+
+.menu li {
+    list-style: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+    transition: 0.5s;
+    /* Reverse delay on close */
+    transition-delay: calc(0.2s * (6 - var(--i)));
+}
+
+.menu.open li {
+    transform: translate(
+        calc(-50% + 1px * var(--x)),
+        calc(-50% + 1px * var(--y))
+    );
+    /* Close delay */
+    transition-delay: calc(0.15s * var(--i));
+}
+
+.menu li a {
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--color);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    transition: width .3s ease-in-out, height 0.3s ease-in-out;
+    transition-delay: calc(0.2s * (6 - var(--i) - 1));
+}
+
+.menu.open li a {
+    width: 60px;
+    height: 60px;
+    /* Open delay - width, height */
+    transition-delay: calc(0.25s * var(--i));
+}
+
+.menu li:hover a {
+    font-size: 2.2rem;
+    transition: font-size 0.2s ease;
+}
+
+/* ////////////////////////////////////////////////////////////////////////////////////////// */
+/*////////////////////////////// ABOUT SECTION //////////////////////////////*/
+/* ////////////////////////////////////////////////////////////////////////////////////////// */
+.about {
+    width: 100%;
+    height: 400px;
+}
+
+/* ////////////////////////////////////////////////////////////////////////////////////////// */
+/*////////////////////////////// RESPONSIVE DESIGN //////////////////////////////*/
+/* ////////////////////////////////////////////////////////////////////////////////////////// */
 @media(max-width: 992px) {
     .navbar .links,
     .navbar .action_btn {

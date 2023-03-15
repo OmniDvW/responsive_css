@@ -51,6 +51,49 @@
                 </div>
             </div>
         </section>
+
+        <section id="menu" class="menu">
+            <button class="action_menu_btn">
+                <ion-icon name="share-outline"></ion-icon>
+            </button>
+
+            <ul>
+                <li style="--i: 1; --x: -50; --y: -100; --color: var(--fb-color)">
+                    <a href="#">
+                        <ion-icon name="logo-facebook"></ion-icon>
+                    </a>
+                </li>
+                <li style="--i: 2; --x: 50; --y: -100; --color: var(--insta-color)">
+                    <a href="#">
+                        <ion-icon name="logo-instagram"></ion-icon>
+                    </a>
+                </li>
+                <li style="--i: 3; --x: 100; --y: 0; --color: var(--twitter-color)">
+                    <a href="#">
+                        <ion-icon name="logo-twitter"></ion-icon>
+                    </a>
+                </li>
+                <li style="--i: 4; --x: 50; --y: 100; --color: var(--linkedin-color)">
+                    <a href="#">
+                        <ion-icon name="logo-linkedin"></ion-icon>
+                    </a>
+                </li>
+                <li style="--i: 5; --x: -50; --y: 100; --color: var(--google-color)">
+                    <a href="#">
+                        <ion-icon name="logo-google"></ion-icon>
+                    </a>
+                </li>
+                <li style="--i: 6; --x: -100; --y: 0; --color: var(--youtube-color)">
+                    <a href="#">
+                        <ion-icon name="logo-youtube"></ion-icon>
+                    </a>
+                </li>
+            </ul>
+        </section>
+
+        <section id="about" class="about">
+
+        </section>
     </main>
 
     <script>
@@ -61,8 +104,11 @@
         var toggleBtnTheme = document.querySelector('.theme_toggle_btn')
         var body = document.querySelector('body')
 
-        window.onload = function() {
-            const theme= localStorage.getItem('theme') || 'light'
+        const button = document.querySelector('.action_menu_btn')
+        const menu = document.querySelector('.menu')
+
+        window.onload = () => {
+            const theme = localStorage.getItem('theme') || 'light'
 
             if(theme === 'dark') {
                 body.classList.add('dark')
@@ -70,7 +116,11 @@
             }
         }
 
-        toggleBtnTheme.addEventListener('click', function() {
+        button.onclick = () => {
+            menu.classList.toggle('open')
+        }
+
+        toggleBtnTheme.addEventListener('click', () => {
             const isDark = body.classList.contains('dark')
 
             body.classList.toggle('dark')
@@ -79,7 +129,7 @@
             localStorage.setItem('theme', isDark ? 'light' : 'dark')
         })
 
-        toggleBtn.onclick = function () {
+        toggleBtn.onclick = () => {
             dropDownMenu.classList.toggle('open')
             const isOpen = dropDownMenu.classList.contains('open')
 
@@ -88,5 +138,7 @@
             : 'fa-solid fa-bars'
         }
     </script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>    
 </body>
 </html>
